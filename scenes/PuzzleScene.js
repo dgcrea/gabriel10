@@ -11,7 +11,7 @@ export default class PuzzleScene extends Phaser.Scene {
 
         // Si el nivel debe ser jigsaw, redirigimos inmediatamente a JigsawScene
         if (this.level >= 5) {
-            this.scene.start('JigsawScene', { level: this.level });
+            this.scene.start('PuzzleScene2', { level: this.level });
             return;
         }
     }
@@ -46,7 +46,7 @@ export default class PuzzleScene extends Phaser.Scene {
 
     create() {
         this.add.text(10, 10, `Nivel: ${this.level}`, { fontFamily: 'Trebuchet MS', fontSize: '24px', color: '#000', backgroundColor: 'rgba(255,255,255,0.9)'}).setDepth(20);
-        this.add.text(300, 10, `Niveles restantes:` + (MAX_LEVELS - this.level), { fontFamily: 'Trebuchet MS', fontSize: '24px', color: '#000', backgroundColor: 'rgba(255,255,255,0.9)'}).setDepth(20);
+     //   this.add.text(300, 10, `Niveles restantes:` + (MAX_LEVELS - this.level), { fontFamily: 'Trebuchet MS', fontSize: '24px', color: '#000', backgroundColor: 'rgba(255,255,255,0.9)'}).setDepth(20);
 
         this.BOARD_COLS = Math.floor(this.PUZZLE_LOGICAL_WIDTH / this.PIECE_WIDTH);
         this.BOARD_ROWS = Math.floor(this.PUZZLE_LOGICAL_HEIGHT / this.PIECE_HEIGHT);
@@ -202,11 +202,11 @@ export default class PuzzleScene extends Phaser.Scene {
         const panel = this.add.container(cx, cy).setDepth(60);
         const bg = this.add.rectangle(0, 0, 400, 160, 0xffffff).setStrokeStyle(2, 0x000);
         const txt = this.add.text(0, -44, '¡Muy bien Gabriel!', { fontFamily: 'Arial', fontSize: '28px', color:'#000' }).setOrigin(0.5);
-        const nextBtn = this.add.text(-80, 10, 'Siguiente', { fontFamily: 'Arial', fontSize: '18px', color:'#fff', backgroundColor: '#0078d7' }).setOrigin(0.5).setPadding(8).setInteractive({ useHandCursor: true });
-        const retryBtn = this.add.text(0, 10, 'Reintentar', { fontFamily: 'Arial', fontSize: '18px', color:'#fff', backgroundColor: '#28a745' }).setOrigin(0.5).setPadding(8).setInteractive({ useHandCursor: true });
+        const nextBtn = this.add.text(-80, 10, 'Siguiente➡️', { fontFamily: 'Arial', fontSize: '18px', color:'#fff', backgroundColor: '#0078d7' }).setOrigin(0.5).setPadding(8).setInteractive({ useHandCursor: true });
+      //  const retryBtn = this.add.text(0, 10, 'Reintentar', { fontFamily: 'Arial', fontSize: '18px', color:'#fff', backgroundColor: '#28a745' }).setOrigin(0.5).setPadding(8).setInteractive({ useHandCursor: true });
         const menuBtn = this.add.text(80, 10, 'Menú', { fontFamily: 'Arial', fontSize: '18px', color:'#000', backgroundColor: '#ddd' }).setOrigin(0.5).setPadding(8).setInteractive({ useHandCursor: true });
 
-        panel.add([bg, txt, nextBtn, retryBtn, menuBtn]);
+        panel.add([bg, txt, nextBtn, menuBtn]);
 
         // Desactivar inputs previos (ya deshabilitado), y bloquear piezas mientras panel activo
         this.disableAllInput();
@@ -217,20 +217,13 @@ export default class PuzzleScene extends Phaser.Scene {
             if (nextLevel > MAX_LEVELS) {
                 this.scene.start('MenuScene');
             } else if (nextLevel >= 5) {
-                this.scene.start('JigsawScene', { level: nextLevel });
+               // this.scene.start('JigsawScene', { level: nextLevel });
+               this.scene.start('PuzzleScene2');
             } else {
                 this.scene.start('PuzzleScene', { level: nextLevel });
             }
         });
 
-        retryBtn.on('pointerdown', () => {
-            // reiniciar mismo nivel en la escena apropiada
-            if (this.level >= 5) {
-                this.scene.start('JigsawScene', { level: this.level });
-            } else {
-                this.scene.start('PuzzleScene', { level: this.level });
-            }
-        });
 
         menuBtn.on('pointerdown', () => {
             this.scene.start('MenuScene');
