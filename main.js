@@ -5,8 +5,8 @@ import JigsawScene from './scenes/JigsawScene.js';
 
 const config = {
   type: Phaser.AUTO,
-  width: 540,
-  height: 960,
+  width: 1280,
+  height: 720,
   parent: 'phaser-example',
 
   transparent: true, 
