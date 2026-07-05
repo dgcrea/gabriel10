@@ -1,7 +1,9 @@
 // main.js - punto de entrada
 import MenuScene from './scenes/MenuScene.js';
 import PuzzleScene from './scenes/PuzzleScene.js';
-import JigsawScene from './scenes/JigsawScene.js';
+import PuzzleScene2 from './scenes/PuzzleScene2.js';
+//import JigsawScene from './scenes/JigsawScene.js';
+import FinalScene from './scenes/FinalScene.js';
 
 const config = {
   type: Phaser.AUTO,
@@ -13,7 +15,7 @@ const config = {
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH
   },
-  scene: [ MenuScene, PuzzleScene, JigsawScene ]
+  scene: [ MenuScene, PuzzleScene,PuzzleScene2, FinalScene]
 };
 
 const game = new Phaser.Game(config);
