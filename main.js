@@ -5,13 +5,15 @@ import JigsawScene from './scenes/JigsawScene.js';
 
 const config = {
   type: Phaser.AUTO,
-  width: 1280,
-  height: 720,
+  width: 720,            // <- nuevo tamaño lógico más grande
+  height: 1080,            // <- nuevo tamaño lógico (16:9)
   parent: 'phaser-example',
-
   transparent: true, 
-  // Orden de escenas: BootScene -> MenuScene -> PuzzleScene
-   scene: [ MenuScene, PuzzleScene, JigsawScene ] 
+  scale: {
+    mode: Phaser.Scale.FIT,
+    autoCenter: Phaser.Scale.CENTER_BOTH
+  },
+  scene: [ MenuScene, PuzzleScene, JigsawScene ]
 };
 
 const game = new Phaser.Game(config);
