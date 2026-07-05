@@ -23,11 +23,11 @@ export default class MenuScene extends Phaser.Scene {
     // Texto principal
     const titleStyle = {
       fontFamily: 'Trebuchet MS',
-      fontSize: '20px',
+      fontSize: '28px',
       color: '#000',
       align: 'center',
       backgroundColor: 'rgba(255,255,255,0.9)',
-      wordWrap: { width: 300, useAdvancedWrap: true }
+      wordWrap: { width: 500, useAdvancedWrap: true }
     };
     this.add.text(width / 2, height * 0.2,
       'Gabriel, hoy es un día de celebración, y temos un reto para tí, resuelve los siguientes desafíos y encuentra el mensaje secreto.🤫',
@@ -66,7 +66,7 @@ export default class MenuScene extends Phaser.Scene {
     });
 
     // Mostrar niveles en 2 filas: 1..5 y 6..10
-    const cols = 5;
+   /**  const cols = 5;
     const rows = 2;
     const startY = btnY + 70;            // y base debajo del botón "Jugar"
     const rowSpacing = 64;               // separación vertical entre filas
@@ -103,7 +103,7 @@ export default class MenuScene extends Phaser.Scene {
         level++;
       }
       if (level > MAX_LEVELS) break;
-    }
+    }**/
 
     // animación de la copa
     this.anims.create({
